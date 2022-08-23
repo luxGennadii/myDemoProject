@@ -22,7 +22,7 @@ public class Main {
             System.out.println("Вами введено больше двух операндов");
             return;
         }
-            return;
+            
         int actionIndex=-1;
         for (int i = 0; i < actions.length; i++) {
             if(exp.contains(actions[i])){
