@@ -1,13 +1,28 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
-public class Calculator {
-    public static void main(String[] args) {
+public class Main {
+    public static String[] calc(String input) {
         Converter converter = new Converter();
         String[] actions = {"+", "-", "/", "*"};
         String[] regexActions = {"\\+", "-", "/", "\\*"};
         Scanner scn = new Scanner(System.in);
         System.out.print("Введите выражение: ");
         String exp = scn.nextLine();
+
+        if (exp[0] == "-"){
+            System.out.println("Вами введено отрицательное число");
+            return;
+        }
+
+
+
+        String[] data = exp.split(" ");
+        if(data.length>2) {
+            System.out.println("Вами введено больше двух операндов");
+            return;
+        }
+            return;
         int actionIndex=-1;
         for (int i = 0; i < actions.length; i++) {
             if(exp.contains(actions[i])){
@@ -30,6 +45,10 @@ public class Calculator {
             }else{
                 a = Integer.parseInt(data[0]);
                 b = Integer.parseInt(data[1]);
+            }
+            if (a<=10 & b<=10){
+                System.out.println(" Вами введено число больше 10");
+                return;
             }
             int result;
             switch (actions[actionIndex]){
@@ -70,8 +89,15 @@ public class Converter {
         romanKeyMap.put('I', 1);
         romanKeyMap.put('V', 5);
         romanKeyMap.put('X', 10);
+        romanKeyMap.put('L', 50);
+        romanKeyMap.put('C', 100);
+        romanKeyMap.put('D', 500);
+        romanKeyMap.put('M', 1000);
 
-
+        arabianKeyMap.put(1000, "M");
+        arabianKeyMap.put(900, "CM");
+        arabianKeyMap.put(500, "D");
+        arabianKeyMap.put(400, "CD");
         arabianKeyMap.put(100, "C");
         arabianKeyMap.put(90, "XC");
         arabianKeyMap.put(50, "L");
