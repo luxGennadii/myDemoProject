@@ -1,6 +1,7 @@
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
+
 public class Main {
     public static String[] calc(String input) {
         Converter converter = new Converter();
@@ -14,15 +15,6 @@ public class Main {
             System.out.println("Вами введено отрицательное число");
             return;
         }
-
-
-
-        String[] data = exp.split(" ");
-        if(data.length>2) {
-            System.out.println("Вами введено больше двух операндов");
-            return;
-        }
-            
         int actionIndex=-1;
         for (int i = 0; i < actions.length; i++) {
             if(exp.contains(actions[i])){
@@ -36,6 +28,10 @@ public class Main {
         }
 
         String[] data = exp.split(regexActions[actionIndex]);
+        if(data().length>1){
+            System.out.println("Вами введено больше двух операндов");
+            return;
+        }
         if(converter.isRoman(data[0]) == converter.isRoman(data[1])){
             int a,b;
             boolean isRoman = converter.isRoman(data[0]);
@@ -46,7 +42,7 @@ public class Main {
                 a = Integer.parseInt(data[0]);
                 b = Integer.parseInt(data[1]);
             }
-            if (a<=10 & b<=10){
+            if (a>10 | b>10){
                 System.out.println(" Вами введено число больше 10");
                 return;
             }
@@ -80,6 +76,7 @@ public class Main {
 }
 
 import java.util.TreeMap;
+
 
 public class Converter {
     TreeMap<Character, Integer> romanKeyMap = new TreeMap<>();
