@@ -5,14 +5,14 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        Converter converter = new Converter();
+        ConverterHelp converterHelp = new ConverterHelp();
         Scanner scn = new Scanner(System.in);
         System.out.print("Введите выражение: ");
         String exp = scn.nextLine();
     }
 }
-class Converter {
-        public String calc(String input){
+    class ConverterHelp{
+        public static String calc(String input){
         String[] actions = {"+", "-", "/", "*"};
         String[] regexActions = {"\\+", "-", "/", "\\*"};
 
